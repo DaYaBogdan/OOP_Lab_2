@@ -33,26 +33,23 @@ worker getElement()
 	return { _FIO, _department, _post, _experience, _salary };
 }
 
-int seeList(list <worker> list)
+int seeList(list <worker> sp)
 {
-	for (auto iter = list.begin(); iter != list.end(); ++iter)
-		cout << iter->FIO << " " << departments[iter->department] << " " << posts[iter->post] << " " << iter->experience << " " << iter->salary << endl;
+	for (auto iter = sp.begin(); iter != sp.end(); ++iter)
+		cout << endl << iter->FIO << " " << departments[iter->department] << " " << posts[iter->post] << " " << iter->experience << " " << iter->salary << endl;
+	cout << endl;
 	return 0;
 }
 
-int saveList(list <worker> list)
+int saveList(list <worker> sp)
 {
-	ofstream file("tests", ios::binary);
+	ofstream file("tests.txt", ios::binary);
 
 	if (!file.is_open()) return 1;
 
-	for (auto iter = list.begin(); iter != list.end(); ++iter)
+	for (const worker& elem : sp)
 	{
-		file << iter->FIO << endl;
-		file << iter->department << endl;
-		file << iter->post << endl;
-		file << iter->experience << endl;
-		file << iter->salary << endl;
+		file << elem;
 	}
 
 	file.close();
@@ -60,17 +57,52 @@ int saveList(list <worker> list)
 	return 0;
 }
 
-list <worker> LoadList()
+list <worker> load()
 {
-	list <worker> list;
+	worker elem;
+	list <worker> sp;
 
-	ifstream file("tests", ios::binary);
+	ifstream file("tests.txt", ios::binary);
 
-	if (!file.is_open()) return list;
+	if (!file.is_open()) return sp;
 
-	while (1) {}
+	while (file >> elem) 
+	{
+		sp.push_front(elem);
+	}
 
 	file.close();
 
-	return list;
+	return sp;
+}
+
+list <worker> honoredWorkers(list <worker> sp)
+{
+	list <worker> honoredList;
+
+	/*for (auto iter = sp.begin(); iter != sp.end(); ++iter)
+	{
+		if()
+	}*/
+
+	return honoredList;
+}
+
+int medianSalary(list <worker> sp)
+{
+	for (int i = 1; i < departments.size(); ++i)
+	{
+		float median = 0;
+		int counter = 0;
+
+		for (auto iter = sp.begin(); iter != sp.end(); ++iter)
+			if (iter->department == i)
+			{
+				median += iter->salary;
+				counter++;
+			}
+		if (!counter) continue;
+		cout << "In department '" << departments[i] << "' median salary is: " << median / counter << endl;
+	}
+	return 0;
 }

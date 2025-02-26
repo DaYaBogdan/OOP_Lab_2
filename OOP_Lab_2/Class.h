@@ -25,12 +25,26 @@ public:
 
 	~worker() {};
 
+	friend ostream& operator << (ostream& os, const worker& obj)
+	{
+		return os << obj.FIO << " " << obj.department << " " << obj.post << " " << obj.experience << " " << obj.salary << endl;
+	}
+
+	friend istream& operator >> (istream& os, worker& obj)
+	{
+		os >> obj.FIO;
+		os >> obj.department;
+		os >> obj.post;
+		os >> obj.experience;
+		os >> obj.salary;
+		return os;
+	}
+
 	friend int seeList(list <worker> list);
 	friend int saveList(list <worker> list);
-	friend list <worker> loadList();
 
-	//friend list <worker> Honoredworkers(list <worker> list);
-	//friend int MedianSalary(list <worker> list);
+	friend list <worker> honoredWorkers(list <worker> list);
+	friend int medianSalary(list <worker> list);
 
 private:
 	string FIO;
@@ -41,5 +55,6 @@ private:
 };
 
 worker getElement();
+list <worker> load();
 
 #endif

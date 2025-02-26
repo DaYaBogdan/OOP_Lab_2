@@ -1,28 +1,47 @@
 #include "Class.h"
+#include <conio.h>
 
 int main()
 {
-	int i;
+	char i;
 	list <worker> list;
 
 	while (1)
 	{
-		cout << "1. Add Element" << endl
-			<< "2. See List" << endl;
+		system("pause");
 
-		cin >> i;
+		cout	<< "1. Add Element"							<< endl
+				<< "2. See List"							<< endl
+				<< "3. Save list"							<< endl
+				<< "4. Load list"							<< endl
+				<< "6. Show Median salary in departments"	<< endl
+				<< "0. Exit"								<< endl;
+
+		i = _getch();
+
+		system("cls");
 
 		switch (i)
 		{
-		case 1:
+		case '1':
 			list.push_front(getElement());
 			break;
-		case 2:
+		case '2':
 			seeList(list);
 			break;
-
-		default:
+		case '3':
+			saveList(list);
 			break;
+		case '4':
+			list = load();
+			break;
+		case '6':
+			medianSalary(list);
+			break;
+		case '0':
+			return 0;
+		default:
+			return 1;
 		}
 	}
 }
