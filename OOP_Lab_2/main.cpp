@@ -14,6 +14,7 @@ int main()
 				<< "2. See List"							<< endl
 				<< "3. Save list"							<< endl
 				<< "4. Load list"							<< endl
+				<< "5. Get Most experienced workers"		<< endl
 				<< "6. Show Median salary in departments"	<< endl
 				<< "0. Exit"								<< endl;
 
