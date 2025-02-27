@@ -76,16 +76,26 @@ list <worker> load()
 	return sp;
 }
 
-list <worker> honoredWorkers(list <worker> sp)
+list <worker> experiencedWorkers(list <worker> sp)
 {
-	list <worker> honoredList;
+	list <worker> experiencedList;
 
-	/*for (auto iter = sp.begin(); iter != sp.end(); ++iter)
+	for (int i = 1; i < departments.size(); ++i)
 	{
-		if()
-	}*/
+		worker mostExperienced;
+		int counter = 0;
+		for (auto iter = sp.begin(); iter != sp.end(); ++iter)
+		{
+			if (mostExperienced.experience < iter->experience and iter->department == i)
+			{
+				counter++;
+				mostExperienced = *iter;
+			}
+		}
+		if (counter) experiencedList.push_back(mostExperienced);
+	}
 
-	return honoredList;
+	return experiencedList;
 }
 
 int medianSalary(list <worker> sp)

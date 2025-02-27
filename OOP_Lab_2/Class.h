@@ -43,7 +43,7 @@ public:
 	friend int seeList(list <worker> list);
 	friend int saveList(list <worker> list);
 
-	friend list <worker> honoredWorkers(list <worker> list);
+	friend list <worker> experiencedWorkers(list <worker> list);
 	friend int medianSalary(list <worker> list);
 
 private:

@@ -35,6 +35,9 @@ int main()
 		case '4':
 			list = load();
 			break;
+		case '5':
+			list = experiencedWorkers(list);
+			break;
 		case '6':
 			medianSalary(list);
 			break;
